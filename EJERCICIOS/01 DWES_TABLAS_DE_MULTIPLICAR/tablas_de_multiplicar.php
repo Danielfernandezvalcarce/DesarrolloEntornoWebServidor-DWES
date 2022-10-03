@@ -9,7 +9,7 @@
 <body>
     <main>
     <?php
-        echo "<h1>ESTO ES LA TABLA DE MULTIPLICAR DEL 10</h1>";
+        echo "<h1>ESTO ES LA TABLA DE MULTIPLICAR DEL 1 AL 10</h1>";
 
         for($i=0; $i<=10; $i++){
             $multiplicador = $i;
