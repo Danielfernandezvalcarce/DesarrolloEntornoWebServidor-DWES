@@ -11,15 +11,16 @@
     <?php
         echo "<h1>ESTO ES LA TABLA DE MULTIPLICAR DEL 10</h1>";
 
-        $multiplicador = 10;
-
-        $output = "<table border=\"2\"><tr><th>MULTIPLICADOR</th><th>MULTIPLICADO</th><th>RESULTADO</th></tr>";
-
         for($i=0; $i<=10; $i++){
-            $output = $output . "<tr><td>" . $multiplicador . "</td><td>" . $i . "</td><td>" . $multiplicador*$i . "</td></tr>";
-        }
+            $multiplicador = $i;
+            $output = "<table border=\"2\"><tr><th>MULTIPLICADOR</th><th>MULTIPLICADO</th><th>RESULTADO</th></tr>";
 
-        echo $output;
+            for($j=0; $j<=10; $j++){
+                $output = $output . "<tr><td>" . $multiplicador . "</td><td>" . $j . "</td><td>" . $multiplicador*$j . "</td></tr>";
+            }
+            $output = $output . "</table> <br>";
+            echo $output;
+        }
     ?>
     </main>
 </body>
