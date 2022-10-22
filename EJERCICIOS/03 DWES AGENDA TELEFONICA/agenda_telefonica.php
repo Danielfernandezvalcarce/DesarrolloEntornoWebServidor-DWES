@@ -9,6 +9,8 @@
 <body>
     <h1>AGENDA DE CONTACTOS TELEFONICOS</h1>
     <?php
+    //Creamos la variable $output en la que iremos metiendo los String necesarios para imprimir por pantalla
+    $output = "";
     //Comprobamos si nos pasan el array agenda o por el contrario esta vacío y tenemos que crearla
     if(isset($_GET["agenda"])){
         $agenda = $_GET["agenda"];
@@ -22,7 +24,7 @@
         $numero_introducido = filter_input(INPUT_GET, "numero_usuario");
         //Programamos la reaccion a los diferentes campos vacíos o si todo está correcto
         if(empty($nombre_introducido)){
-            echo ("<p> Debes introducir un nombre. </p>");
+            $output.= "<p> Debes introducir un nombre. </p>";
         }elseif(empty($numero_introducido)){
             unset($agenda[$nombre_introducido]);
         }else{
@@ -34,7 +36,7 @@
     <form>
         <?php
         foreach($agenda as $nombre => $numero){
-            echo "<input type=\"hidden\" name=\"agenda[" . $nombre . "]\" value=\" " . $numero . " \"/>";
+            $output .= "<input type=\"hidden\" name=\"agenda[" . $nombre . "]\" value=\" " . $numero . " \"/>";
         }
         ?>
         <label for="nombre_usuario">Nombre : </label>
@@ -47,11 +49,13 @@
     <h2>Agenda</h2>
     <?php //Mostramos todos los contactos de la agenda
 
-    echo "<ul>";
+    $output .= "<ul>";
     foreach($agenda as $nombre => $numero){
-        echo "<li>" . $nombre . " : " . $numero . "</li>";
+        $output .= "<li>" . $nombre . " : " . $numero . "</li>";
     }
-    echo "</ul>";
+    $output .= "</ul>";
+
+    echo $output;
     ?>
 </body>
 </html>
