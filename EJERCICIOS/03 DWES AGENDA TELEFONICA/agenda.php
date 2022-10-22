@@ -29,7 +29,7 @@
             $agenda[$nombre_introducido] = $numero_introducido;
         }
     }
-    //echo $output;
+    
     ?>
     <h2>Introducir contacto</h2>
     <form>
@@ -48,13 +48,11 @@
     <h2>Agenda</h2>
     <?php //Mostramos todos los contactos de la agenda
 
-    echo "<ul>";
+    echo "<ol type=\"1\">";
     foreach($agenda as $nombre => $numero){
-        echo "<li>" . $nombre . " : " . $numero . "</li>";
+        echo "<li> <b>Nombre: </b>" . $nombre . " :<b> Nº de telefono: </b>" . $numero . "</li>";
     }
-    echo "</ul>";
-
-    //echo $output;
+    echo "</ol>";
     ?>
 </body>
 </html>
