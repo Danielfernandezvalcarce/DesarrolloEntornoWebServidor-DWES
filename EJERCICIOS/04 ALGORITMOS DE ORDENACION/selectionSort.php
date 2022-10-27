@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
 </head>
+
 <body>
     <form>
         <label for="size">Introduce el tamaño del array que quieres ordenar:</label>
@@ -16,10 +16,11 @@
         <input type="number" name="max" required><br>
         <input type="submit" name="submit">
     </form>
-    <?php
-    //ALGORITMO DE ORDENACION MEDIANTE EL METODO DE BUBBLE SORT, VA A ORDENAR UN ARRAY ALEATORIO DE LOS NUMEROS QUE SOLICITE EL USUARIO
 
-    echo "<h1>METODO BUBBLE SORT</h1>";
+    <?php
+    //ALGORITMO DE ORDENACION MEDIANTE EL METODO DE SELECTION SORT, VA A ORDENAR UN ARRAY ALEATORIO DE LOS NUMEROS QUE SOLICITE EL USUARIO
+
+    echo "<h1>METODO SELECTION SORT</h1>";
     //COMPROBAMOS QUE NOS HA LLEGADO EL SUBMIT Y RECOGEMOS LOS VALORES QUE NOS INTERESAN
     if(isset($_GET["submit"])){
         $array_size = intval(filter_input(INPUT_GET,"size"));
@@ -33,15 +34,20 @@
             echo $desordenado[$x] . ", ";
         }
     
-        //ORDENAMOS LOS NUMEROS MEDIANTE EL METODO BUBBLE SORT
-        for($j=0; $j<count($desordenado); $j++){
-            for($k=0; $k<count($desordenado)-1; $k++){
-                if($desordenado[$k] > $desordenado[$k+1]){
-                    $auxiliar = $desordenado[$k];
-                    $desordenado[$k] = $desordenado[$k+1];
-                    $desordenado[$k+1] = $auxiliar;
+        //ORDENAMOS LOS NUMEROS MEDIANTE EL METODO SELECTION SORT
+        $posicionMinima;
+        $auxiliar;
+    
+        for ($i = 0; $i < count($desordenado)-1; $i++) {
+            $posicionMinima = $i;
+            for ($j = $i + 1; $j < count($desordenado); $j++) {
+                if ($desordenado[$j] < $desordenado[$posicionMinima]) {
+                    $posicionMinima = $j;
                 }
             }
+            $auxiliar = $desordenado[$i];
+            $desordenado[$i] = $desordenado[$posicionMinima];
+            $desordenado[$posicionMinima] = $auxiliar;
         }
     
         echo "<br> <h2>Array ordenado</h2> <br>";
